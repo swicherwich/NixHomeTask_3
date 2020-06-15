@@ -9,30 +9,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DataBuilderTest {
 	
-	private DataBuilder dataBuilder = new DataBuilder();
-	private UserService userService = dataBuilder.getUserService();
-	
 	@Test
 	public void builderTest() {
+		DataBuilder dataBuilder = new DataBuilder();
+		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
 		
 		assertEquals(2, userService.findAll().size());
 	}
 	
 	@Test
-	public void deleteTest() {
-		dataBuilder.buildDataList();
-		
-		userService.findAll().forEach(user -> {
-			userService.delete(user);
-		});
-		
-		assertEquals(0, userService.findAll().size());
-	}
-	
-	@Test
 	public void saveTest() {
+		DataBuilder dataBuilder = new DataBuilder();
+		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
+		
 		UserUtil<User> userUtil = new UserUtilImpl();
 		
 		User user = new User();
@@ -41,6 +32,47 @@ public class DataBuilderTest {
 		user.setEmail("mike.show@mail.com");
 		userService.saveOrUpdate(user);
 		
-		assertEquals(1, userService.findAll().size());
+		assertEquals(3, userService.findAll().size());
 	}
+	
+	@Test
+	public void updateTest() {
+		DataBuilder dataBuilder = new DataBuilder();
+		UserService userService = dataBuilder.getUserService();
+		dataBuilder.buildDataList();
+		
+		User user = new User();
+		
+		user.setEmail("newmike.show@mail.com");
+		userService.saveOrUpdate(user);
+		
+		assertEquals(3, userService.findAll().size());
+	}
+	
+	@Test
+	public void findByEmailTest() {
+		DataBuilder dataBuilder = new DataBuilder();
+		UserService userService = dataBuilder.getUserService();
+		dataBuilder.buildDataList();
+		
+		User user = new User();
+		
+		user.setEmail("testw@mail.com");
+		userService.saveOrUpdate(user);
+		
+		assertEquals(user, userService.findByEmail("testw@mail.com"));
+	}
+	
+	@Test
+	public void deleteTest() {
+		DataBuilder dataBuilder = new DataBuilder();
+		UserService userService = dataBuilder.getUserService();
+		dataBuilder.buildDataList();
+		
+		userService.findAll().forEach(userService::remove);
+		
+		assertEquals(0, userService.findAll().size());
+	}
+	
+	
 }
