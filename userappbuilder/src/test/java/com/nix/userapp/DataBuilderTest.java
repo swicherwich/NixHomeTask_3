@@ -3,6 +3,7 @@ package com.nix.userapp;
 import com.nix.userapp.builder.DataBuilder;
 import com.nix.userapp.entity.User;
 import com.nix.userapp.service.UserService;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -69,5 +70,15 @@ public class DataBuilderTest {
 		
 		assertEquals(user, userService.findById(userService.findAll().size()));
 	}
-	
+
+	@Test
+	public void deleteTest() {
+		dataBuilder.buildDataList();
+		
+		userService.findAll().forEach(user -> {
+			userService.delete(user);
+		});
+		
+		assertEquals(0, userService.findAll().size());
+	}
 }

@@ -37,16 +37,22 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@Override
 	public void update(User user) {
-		users.forEach(currentUser -> {
+		for(User currentUser: users) {
 			if(currentUser.getId().equals(user.getId())) {
 				currentUser.setEmail(user.getEmail());
+				currentUser.setFirstName(user.getFirstName());
+				currentUser.setLastName(user.getLastName());
 			}
-		});
+		}
 	}
 	
 	@Override
 	public void delete(User user) {
-		users.remove(user);
+		for(User currentUser: users) {
+			if(currentUser.getId().equals(user.getId())) {
+				users.remove(user);
+			}
+		}
 	}
 	
 	@Override
