@@ -15,6 +15,9 @@ public class DataBuilderTest {
 		UserService userService = new UserServiceImpl();
 		dataBuilder.buildDataList();
 		
-		assertEquals(3, userService.findAll().size());
+		assertEquals(2, userService.findAll().size());
+		
+		
+		
 	}
 }

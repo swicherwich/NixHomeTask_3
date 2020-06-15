@@ -6,9 +6,9 @@ import com.nix.userapp.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserUserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 	
-	List<User> users = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
 	
 	@Override
 	public User findByEmail(String email) {

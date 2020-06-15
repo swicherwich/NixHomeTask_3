@@ -2,14 +2,14 @@ package com.nix.userapp.service.impl;
 
 import com.nix.userapp.entity.User;
 import com.nix.userapp.repository.UserRepository;
-import com.nix.userapp.repository.impl.UserUserRepositoryImpl;
+import com.nix.userapp.repository.impl.UserRepositoryImpl;
 import com.nix.userapp.service.UserService;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 	
-	UserRepository userRepository = new UserUserRepositoryImpl();
+	UserRepository userRepository = new UserRepositoryImpl();
 	
 	@Override
 	public User findByEmail(String email) {
