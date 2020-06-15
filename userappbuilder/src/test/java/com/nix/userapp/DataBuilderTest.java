@@ -62,4 +62,5 @@ public class DataBuilderTest {
 		
 		assertEquals(user, userService.findByEmail("testw@mail.com"));
 	}
+	
 }
