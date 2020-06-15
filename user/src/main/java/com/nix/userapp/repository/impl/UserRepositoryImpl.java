@@ -46,11 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@Override
 	public void delete(User user) {
-		users.forEach(currentUser -> {
-			if(currentUser.getId().equals(user.getId())) {
-				users.remove(user);
-			}
-		});
+		users.remove(user);
 	}
 	
 	@Override

@@ -10,6 +10,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<artifactId>tools</artifactId>
+	<packaging>jar</packaging>
+	
 	<name>user :: tools</name>
 	
 	<dependencies>
@@ -20,8 +22,6 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-	
-	<packaging>jar</packaging>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

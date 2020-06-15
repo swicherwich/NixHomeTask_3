@@ -24,11 +24,12 @@ public class DataBuilder implements AbstractBuilder {
 			
 			userService.saveOrUpdate(user);
 		}
-		
+
 		userService.findAll().forEach(currentUser -> {
-			System.out.println("\nFirst name: " + currentUser.getFirstName() +
-								"\nLast name: " + currentUser.getLastName() +
-								"\nEmail: " + currentUser.getEmail()
+			System.out.println(
+					"\nFirst name: " + currentUser.getFirstName() +
+					"\nLast name: " + currentUser.getLastName() +
+					"\nEmail: " + currentUser.getEmail()
 			);
 		});
 	}

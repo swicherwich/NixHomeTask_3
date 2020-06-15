@@ -9,10 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DataBuilderTest {
 	
+	private DataBuilder dataBuilder = new DataBuilder();
+	private UserService userService = dataBuilder.getUserService();
+	
 	@Test
 	public void builderTest() {
-		DataBuilder dataBuilder = new DataBuilder();
-		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
 		
 		assertEquals(2, userService.findAll().size());
@@ -20,8 +21,6 @@ public class DataBuilderTest {
 	
 	@Test
 	public void saveTest() {
-		DataBuilder dataBuilder = new DataBuilder();
-		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
 		
 		UserUtil<User> userUtil = new UserUtilImpl();
@@ -37,8 +36,6 @@ public class DataBuilderTest {
 	
 	@Test
 	public void updateTest() {
-		DataBuilder dataBuilder = new DataBuilder();
-		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
 		
 		User user = new User();
@@ -51,8 +48,6 @@ public class DataBuilderTest {
 	
 	@Test
 	public void findByEmailTest() {
-		DataBuilder dataBuilder = new DataBuilder();
-		UserService userService = dataBuilder.getUserService();
 		dataBuilder.buildDataList();
 		
 		User user = new User();
@@ -61,6 +56,18 @@ public class DataBuilderTest {
 		userService.saveOrUpdate(user);
 		
 		assertEquals(user, userService.findByEmail("testw@mail.com"));
+	}
+	
+	@Test
+	public void findByIdTest() {
+		dataBuilder.buildDataList();
+		
+		User user = new User();
+		
+		user.setEmail("testw@mail.com");
+		userService.saveOrUpdate(user);
+		
+		assertEquals(user, userService.findById(userService.findAll().size()));
 	}
 	
 }
