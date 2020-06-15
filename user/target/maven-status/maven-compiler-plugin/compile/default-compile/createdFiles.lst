@@ -1,8 +1,0 @@
-com\nix\userapp\service\impl\UserServiceImpl.class
-com\nix\userapp\entity\User.class
-com\nix\userapp\repository\UserRepository.class
-com\nix\userapp\entity\AbstractEntity.class
-com\nix\userapp\repository\AbstractRepository.class
-com\nix\userapp\service\UserService.class
-com\nix\userapp\repository\impl\UserRepositoryImpl.class
-com\nix\userapp\service\AbstractService.class
