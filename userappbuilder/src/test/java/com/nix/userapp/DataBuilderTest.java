@@ -62,17 +62,4 @@ public class DataBuilderTest {
 		
 		assertEquals(user, userService.findByEmail("testw@mail.com"));
 	}
-	
-	@Test
-	public void deleteTest() {
-		DataBuilder dataBuilder = new DataBuilder();
-		UserService userService = dataBuilder.getUserService();
-		dataBuilder.buildDataList();
-		
-		userService.findAll().forEach(userService::remove);
-		
-		assertEquals(0, userService.findAll().size());
-	}
-	
-	
 }
